@@ -1,0 +1,18 @@
+<div class="container mt-3 mb-4">
+  <form (ngSubmit)="addStory()" class="p-3 border shadow-sm rounded bg-light">
+      <div class="row g-4 align-items-center">
+          <div class="col-lg-3 col-md-4 col-sm-12">
+              <input type="text" class="form-control" [(ngModel)]="storyName" name="storyName" placeholder="Story Name" required>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-12">
+              <input type="number" class="form-control" [(ngModel)]="storyPoints" name="storyPoints" placeholder="Story Points" required>
+          </div>
+          <div class="col-lg-5 col-md-8 col-sm-12">
+              <input type="text" class="form-control" [(ngModel)]="storyDescription" name="storyDescription" placeholder="Story Description">
+          </div>
+          <div class="col-lg-1 col-md-4 col-sm-12">
+              <button type="submit" class="btn btn-primary btn-sm w-100">Add</button>
+          </div>
+      </div>
+  </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="container mt-3">
+  <div class="bg-white">
+    <h4 class="mb-3 fw-semibold text-dark text-center">Selected Stories</h4>
+
+    <div class="row g-3">
+      <div *ngFor="let story of SprintService.getSelectedStories(); let i = index" class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card story-card shadow-sm border-light position-relative">
+          <div class="card-body">
+            <!-- Delete Button -->
+            <button class="btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2"
+                    (click)="removeFromSprint(i)">
+              <i class="bi bi-trash"></i>
+            </button>
+
+            <!-- Story Name -->
+            <h5 class="card-title mb-1 text-dark">{{ story.name }}</h5>
+
+            <!-- Points Badge -->
+            <span class="badge bg-primary mb-2">{{ story.points }} points</span>
+
+            <!-- Description -->
+            <p class="description text-muted small">{{ story.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

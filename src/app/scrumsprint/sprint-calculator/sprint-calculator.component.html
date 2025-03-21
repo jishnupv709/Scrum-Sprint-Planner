@@ -1,0 +1,16 @@
+<div class="card p-4 shadow-sm rounded border-light bg-white text-center">
+  <h4 class="mb-4 fw-semibold text-dark">Sprint Calculator</h4>
+
+  <!-- Sprint Capacity Input (50% Width) -->
+  <div class="mb-3">
+    <input type="number" class="form-control text-center border-secondary w-50 mx-auto"
+           placeholder="Sprint Capacity" [(ngModel)]="sprintCapacity" min="1">
+  </div>
+
+  <!-- Button Group (Compact & Centered) -->
+  <div class="d-flex justify-content-center gap-2 flex-wrap">
+    <button class="btn btn-primary px-4 py-2" (click)="generateSprint()">Generate</button>
+    <button class="btn btn-danger px-4 py-2" (click)="clearStories()">Clear Stories</button>
+    <button class="btn btn-warning px-4 py-2 text-dark" (click)="clearSprint()">Clear Sprint</button>
+  </div>
+</div>

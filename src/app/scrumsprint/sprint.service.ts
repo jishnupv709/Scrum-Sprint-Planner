@@ -63,7 +63,7 @@ export class SprintService {
     let closestSum = 0;
 
     const storyCount = this.stories.length;
-    const totalSubsets = 1 << storyCount; // 2^n subsets
+    const totalSubsets = 1 << storyCount; 
 
     const sortedStories = [...this.stories].sort((a, b) => 
       b.points - a.points || a.name.localeCompare(b.name)

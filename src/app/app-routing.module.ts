@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'scrum-sprint', loadChildren: () => import('./scrumsprint/scrumsprint.module').then(m => m.ScrumSprintModule) },
-  { path: '**', redirectTo: 'scrum-sprint' } // Default Route
+  { path: '**', redirectTo: 'scrum-sprint' } 
 ];
 
 @NgModule({

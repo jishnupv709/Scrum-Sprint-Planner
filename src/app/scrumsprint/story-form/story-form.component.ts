@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SprintService } from '../sprint.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-story-form',
@@ -9,17 +10,28 @@ import { SprintService } from '../sprint.service';
 export class StoryFormComponent {
   storyName = '';
   storyPoints: number | null = null;
-  storyDescription='';
+  storyDescription = '';
 
-  constructor(private SprintService: SprintService) {}
+  constructor(private sprintService: SprintService, private toastr: ToastrService) {}
 
   addStory() {
-    if (!this.storyName || this.storyPoints === null) return;
-    if (!this.SprintService.addStory(this.storyName, this.storyPoints,this.storyDescription)) {
-    } else {
+    const trimmedName = this.storyName.trim();
+    const trimmedDescription = this.storyDescription.trim();
+
+    if (!trimmedName || this.storyPoints === null || this.storyPoints <= 0 || !trimmedDescription) {
+      this.toastr.info('All fields are required. Please provide valid inputs.', 'Validation Error');
+      return;
+    }
+
+    const isAdded = this.sprintService.addStory(trimmedName, this.storyPoints, trimmedDescription);
+    
+    if (isAdded) {
+      this.toastr.success('Story added successfully!', 'Success');
       this.storyName = '';
       this.storyPoints = null;
-      this.storyDescription='';
+      this.storyDescription = '';
+    } else {
+      this.toastr.error('Story already exists or could not be added.', 'Error');
     }
   }
 }

@@ -6,7 +6,7 @@ import { ManageSprintComponent } from './manage-sprint/manage-sprint.component';
 const routes: Routes = [
   { path: 'manage-stories', component: ManageStoriesComponent },
   { path: 'manage-sprint', component: ManageSprintComponent },
-  { path: '**', redirectTo: 'manage-stories' } // Default Route
+  { path: '**', redirectTo: 'manage-stories' } 
 ];
 
 @NgModule({

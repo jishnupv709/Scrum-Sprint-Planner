@@ -3,26 +3,34 @@
     <h4 class="mb-3 fw-semibold text-dark text-center">Selected Stories</h4>
 
     <div class="row g-3">
-      <div *ngFor="let story of SprintService.getSelectedStories(); let i = index" class="col-lg-3 col-md-4 col-sm-6">
-        <div class="card story-card shadow-sm border-light position-relative">
-          <div class="card-body">
-            <!-- Delete Button -->
-            <button class="btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2"
-                    (click)="removeFromSprint(i)">
-              <i class="bi bi-trash"></i>
-            </button>
+      <ng-container *ngIf="SprintService.getSelectedStories().length > 0; else noData">
+        <div *ngFor="let story of SprintService.getSelectedStories(); let i = index" class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card story-card shadow-sm border-light position-relative">
+            <div class="card-body">
+              <button class="btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2"
+                      (click)="removeFromSprint(i)">
+                <i class="bi bi-trash"></i>
+              </button>
 
-            <!-- Story Name -->
-            <h5 class="card-title mb-1 text-dark">{{ story.name }}</h5>
-
-            <!-- Points Badge -->
-            <span class="badge bg-primary mb-2">{{ story.points }} points</span>
-
-            <!-- Description -->
-            <p class="description text-muted small">{{ story.description }}</p>
+              <h5 class="card-title mb-1 text-dark">{{ story.name }}</h5>
+              <span class="badge bg-primary mb-2">{{ story.points }} points</span>
+              <p class="description text-muted small">{{ story.description }}</p>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-container>
+
+      <!-- No Data Available Message -->
+      <ng-template #noData>
+        <div class="d-flex flex-column align-items-center justify-content-center text-center w-100" style="height: 50vh;">
+          <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3L21 21" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 17H20M4 21H20M4 13H12M16 13H20M4 9H8M12 9H20M4 5H20" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="mt-3 text-secondary fs-5">No data available</p>
+        </div>
+      </ng-template>
+
     </div>
   </div>
 </div>
